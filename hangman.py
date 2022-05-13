@@ -57,11 +57,15 @@ def hangman():
             else:
                 lives = lives - 1
                 print('Letter is not in word')
-        #
+
         elif user_letter in used_letters:
             print('letter already guessed, guess another letter')
 
         else: 
             print('invalid character')
+    if lives == 0:
+        print('Game over, the word was', word)
+    else: 
+        print('You win, the word was', word, '!!')
 
 hangman()
