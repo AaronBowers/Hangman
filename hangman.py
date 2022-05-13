@@ -22,14 +22,18 @@ def hangman():
     used_letters = set() 
     #get user input for their guess, and store it and convert to uppercase letters
     
-    #Allows user to keep guessing until the man is hanged.
-    #loop condition for game
-    #letters in guessed word must be more than 0
-    #game ends if lives reach zero
     #game ends if word is guessed
-    #show user current word with correctly guessed letters and dashes for letters/
-    #to be guessed 
-    while len(word_letters) > 0:
+    #game ends if lives reach zero
+    #take away life for incorrect guess
+    #tell user if they have already guessed a letter, and dont take away life
+    #show guessed letters
+    #show word with correctly guessed letters
+    #show word with dashes for letters to be guessed
+    lives = 6
+
+    while len(word_letters) > 0 and lives > 0:
+
+        print('You have', lives, 'lives left and you have used these letters: ', ''.join(used_letters))
 
         #show the correct letters guessed
         #show the letters to be guessed 
@@ -50,6 +54,9 @@ def hangman():
             if user_letter in word_letters:
                 #removes letter from word held in memory
                 word_letters.remove(user_letter)
+            else:
+                lives = lives - 1
+                print('Letter is not in word')
         #
         elif user_letter in used_letters:
             print('letter already guessed, guess another letter')
